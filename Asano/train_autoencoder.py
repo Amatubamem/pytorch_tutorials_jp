@@ -83,7 +83,7 @@ for t in range(epochs):
     
 print("Done!")
 
-fig = vis.visualizer(e, c, l) 
+fig = vis.progplot(e, c, l) 
 fig.savefig(f"{prefix}.png") 
 
 

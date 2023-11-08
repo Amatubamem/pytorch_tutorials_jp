@@ -7,7 +7,7 @@ from torch import nn
 import numpy as np
 
 class SparseMSELoss(nn.Module):
-    def __init__(self, beta=0.1, rho=0.3, **kwargs):
+    def __init__(self, beta=0.1, rho=0.05, **kwargs):
         super(SparseMSELoss, self).__init__()
         self.beta = beta
         self.rho = rho

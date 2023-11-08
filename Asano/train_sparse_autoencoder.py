@@ -73,21 +73,19 @@ optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
 
 epochs = 50
 
-e = []
 c = []
 l = []
 for t in range(epochs):
     print(f"Epoch {t+1}\n-------------------------------")
     tt.train(train_dataloader, model, optimizer, loss_fn)
     correct, test_loss = tt.test(test_dataloader, model, loss_fn)
-    e.append(t)
     c.append(correct)
     l.append(test_loss)
 
     
 print("Done!")
 
-fig = vis.visualizer(e, c, l) 
+fig = vis.progplot(epochs, c, l) 
 fig.savefig(f"{prefix}.png") 
 
 

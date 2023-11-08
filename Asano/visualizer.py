@@ -5,19 +5,21 @@
 
 import matplotlib.pyplot as plt
 
-def visualizer(e, c, l):
+def progplot(epoch, accuracy, loss):
     fig, ax1 = plt.subplots()
-    ax1.plot(e, c, label='Accuracy', linestyle='-', color='blue')
+    ax1.plot(range(epoch), [a*100 for a in accuracy],
+                label='Accuracy(%)', linestyle='-', color='blue')
     ax1.set_xlabel('Epochs')
     ax1.set_ylabel('Accuracy', color='b')
     ax1.tick_params(axis='y', labelcolor='b')
-    ax1.set_ylim(0,1)
+    ax1.set_ylim(0,100)
     plt.grid(True)  # グリッドを表示
 
 
     # 2つ目のy軸に対するプロット
     ax2 = ax1.twinx()
-    ax2.plot(e, l, label='Avg loss', linestyle='--', color='red')
+    ax2.plot(range(epoch), loss,
+                label='Avg loss', linestyle='--', color='red')
     ax2.set_ylabel('Avg Loss', color='r')
     ax2.tick_params(axis='y', labelcolor='r')
     ax2.set_ylim(bottom=0)
@@ -29,3 +31,4 @@ def visualizer(e, c, l):
     labels = labels1 + labels2
     ax1.legend(lines, labels, loc='upper left')
     return fig
+
